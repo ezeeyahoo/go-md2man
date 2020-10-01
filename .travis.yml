@@ -18,8 +18,8 @@ matrix:
 script:
   - |
       if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
-        wget -O "$DEB" 'https://github.com/golangci/golangci-lint/releases/download/v1.31.0/golangci-lint-1.31.0-linux-ppc64le.deb' &&
-        sudo dpkg -i "$DEB"
+        wget -O /tmp/golangci-lint 'https://github.com/golangci/golangci-lint/releases/download/v1.31.0/golangci-lint-1.31.0-linux-ppc64le.deb' &&
+        sudo dpkg -i /tmp/golangci-lint
       fi
   - if [ "${TRAVIS_GO_VERSION}" = "stable" ]; then make check-mod; fi
   - if [ "${TRAVIS_GO_VERSION}" = "stable" ]; then make golangci-lint; fi
